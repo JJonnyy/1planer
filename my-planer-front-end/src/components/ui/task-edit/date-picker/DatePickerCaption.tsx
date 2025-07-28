@@ -1,5 +1,4 @@
 import dayjs from 'dayjs'
-import type { DateFormatter } from 'react-day-picker'
 
 const seasonEmoji: Record<string, string> = {
 	winter: '⛄️',
@@ -10,26 +9,16 @@ const seasonEmoji: Record<string, string> = {
 
 const getSeason = (month: Date): keyof typeof seasonEmoji => {
 	const monthNumber = month.getMonth() + 1
-
 	if (monthNumber > 2 && monthNumber < 6) return 'spring'
 	if (monthNumber > 5 && monthNumber < 9) return 'summer'
 	if (monthNumber > 8 && monthNumber < 12) return 'autumn'
 	else return 'winter'
 }
 
-export const formatCaption: DateFormatter = month => {
+// Создаем собственный тип, поскольку formatCaption должен возвращать строку, а не JSX
+export const formatCaption = (month: Date): string => {
 	const season = getSeason(month)
-
-	return (
-		<>
-			<span
-				role='img'
-				aria-label={season}
-				className='mr-2'
-			>
-				{seasonEmoji[season]}
-			</span>
-			{dayjs(month).format('MMMM')}
-		</>
-	)
+	const emoji = seasonEmoji[season]
+	const monthName = dayjs(month).format('MMMM YYYY')
+	return `${emoji} ${monthName}`
 }

@@ -1,0 +1,33 @@
+.list {
+	.block {
+		border-radius: 4px; // Соответствует rounded
+		margin-bottom: 0.75rem; // Соответствует mb-3
+		padding: 1rem; // Соответствует p-4
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 0.875rem; // Соответствует text-sm
+
+		&:active,
+		&:hover {
+			.grip {
+				opacity: 1; // Соответствует opacity-100
+			}
+		}
+	}
+}
+
+.grip {
+	opacity: 0.25; // Соответствует opacity-25
+	transition: opacity 0.2s; // Соответствует transition-opacity
+	margin-left: -0.25rem; // Соответствует -ml-1
+	margin-right: 0.125rem; // Соответствует mr-0.5
+
+	&:hover,
+	&:active {
+		.grip {
+			opacity: 1; // Соответствует opacity-100
+		}
+	}
+}

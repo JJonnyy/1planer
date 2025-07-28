@@ -1,0 +1,80 @@
+.table {
+	width: 100%;
+
+	.header {
+		display: grid;
+		grid-template-columns: 1.4fr 0.4fr 0.4fr 0.1fr;
+	}
+
+	.header,
+	.parentsWrapper .row,
+	.parentsWrapper .colHeading {
+		border-top: 1px solid #ffffff1f; // Замените #border на ваш цвет границы
+		border-radius: 4px; // Настройте радиус скругления по вашему вкусу
+		text-align: left;
+		width: auto;
+		white-space: nowrap;
+
+		> div {
+			border-right: 1px solid #ffffff1f; // Замените #border на ваш цвет границы
+			padding: 8px 16px; // Замените на ваши значения отступов
+
+			&:last-child {
+				border-right: 0;
+			}
+		}
+	}
+
+	.parentsWrapper {
+		.colHeading {
+			&:hover {
+				background-color: transparent;
+			}
+			background-color: #0e0f0f;
+
+			> div {
+				font-weight: 600; // Соответствует font-semibold в Tailwind
+				font-size: 1.25rem; // Соответствует text-xl в Tailwind
+				padding: 12px 0; // Замените на ваши значения отступов
+			}
+		}
+
+		.addRow {
+			padding: 8px 16px; // Замените на ваши значения отступов
+			border-top: 1px solid #ffffff1f; // Замените #border на ваш цвет границы
+		}
+
+		.row {
+			font-weight: 400; // Соответствует font-normal в Tailwind
+			display: grid;
+			grid-template-columns: 1.4fr 0.4fr 0.4fr 0.1fr;
+			position: relative;
+
+			&.completed {
+				> div > span > input {
+					font-style: italic;
+					text-decoration: line-through;
+					opacity: 0.5;
+				}
+			}
+
+			&:hover {
+				background-color: #1c1f1f;
+			}
+
+			> div > span {
+				.grip {
+					opacity: 0.2;
+					transition: opacity 0.2s;
+					margin-left: -12px; // Замените на ваши значения отступов
+					margin-right: -4px; // Замените на ваши значения отступов
+
+					&:hover,
+					&:active {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+}

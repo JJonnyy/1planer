@@ -1,0 +1,59 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem; // Соответствует gap-2
+}
+
+.roundsContainer {
+	display: flex;
+	gap: 0.75rem; // Соответствует gap-3
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.25rem; // Соответствует mt-1
+}
+
+.button {
+	opacity: 0.2; // Соответствует opacity-20
+	transition: opacity 0.2s; // Соответствует transition-opacity
+	margin-top: 0.25rem; // Соответствует mt-1
+
+	&:hover {
+		opacity: 1; // Соответствует hover:opacity-100
+	}
+
+	&:disabled {
+		opacity: 0.2; // Соответствует disabled:opacity-20
+	}
+}
+
+.round {
+	border-radius: 4px; // Соответствует rounded
+	border: 1px solid #ffffff1f; // Замените #border на ваш цвет границы
+	width: 1.25rem; // Соответствует w-5
+	height: 1.25rem; // Соответствует h-5
+	position: relative;
+
+	&::before {
+		background-color: #7551FF; // Замените #primary на ваш основной цвет
+		border-top-left-radius: 4px; // Соответствует rounded-l
+		border-bottom-left-radius: 4px; // Соответствует rounded-l
+		transition: all 0.3s; // Соответствует transition-all duration-300
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0%;
+		height: 100%;
+	}
+
+	&.active::before {
+		transition-duration: 1s; // Соответствует duration-1000
+		width: 40%; // Соответствует width: 40%
+	}
+
+	&.completed::before {
+		border-radius: 4px; // Соответствует rounded
+		width: 100%; // Соответствует width: 100%
+	}
+}

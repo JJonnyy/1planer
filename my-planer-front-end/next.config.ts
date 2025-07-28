@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	basePath: '/1planer',
 	trailingSlash: true,
 	reactStrictMode: true,
 	// Если используешь images

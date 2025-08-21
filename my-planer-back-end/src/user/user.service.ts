@@ -78,7 +78,7 @@ export class UserService {
 		}
 	}
 
-	async create(dto: AuthDto) {
+	async 	create(dto: AuthDto) {
 		const user = {
 			email: dto.email,
 			name: '',

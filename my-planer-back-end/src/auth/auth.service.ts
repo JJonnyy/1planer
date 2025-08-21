@@ -95,11 +95,12 @@ export class AuthService {
 
 		res.cookie(this.REFRESH_TOKEN_NAME, refreshToken, {
 			httpOnly: true,
-			domain: 'localhost',
+			domain: '.stage-dream.tech',
 			expires: expiresIn,
 			secure: true,
-			// lax if production
-			sameSite: 'none'
+			// sameSite: 'lax', А для локальной разработки (без HTTPS) обычно делают:
+			sameSite: 'none',
+			maxAge: 15 * 24 * 60 * 60 * 1000,
 		})
 	}
 

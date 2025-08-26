@@ -12,7 +12,7 @@ export const getAccessToken = () => {
 
 export const saveTokenStorage = (accessToken: string) => {
     Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
-        domain: 'localhost',
+        domain: import.meta.env.PROD ? '.stage-dream.tech' : 'localhost',
         sameSite: 'strict',
         expires: 1
     })

@@ -107,7 +107,7 @@ export class AuthService {
 	removeRefreshTokenFromResponse(res: Response) {
 		res.cookie(this.REFRESH_TOKEN_NAME, '', {
 			httpOnly: true,
-			domain: 'localhost',
+			domain: '.stage-dream.tech',
 			expires: new Date(0),
 			secure: true,
 			// lax if production
@@ -115,3 +115,6 @@ export class AuthService {
 		})
 	}
 }
+
+
+

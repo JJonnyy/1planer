@@ -5,6 +5,7 @@ export function Header() {
 	return (
 		<header>
 			<GlobalLoader />
+			TESt
 			<Profile />
 		</header>
 	)

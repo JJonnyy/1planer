@@ -12,11 +12,11 @@ const options : CreateAxiosDefaults = {
 }
 
 const axiosClassic = axios.create({
-  // baseURL: process.env.APP_SERVER_URL || 'http://localhost:4200/api',
-  baseURL: import.meta.env.PROD
-    ? 'https://1planer.stage-dream.tech/api'
-    : 'http://localhost:4200/api',
-  withCredentials: true,
+  baseURL: process.env.APP_SERVER_URL || 'https://1planer.stage-dream.tech/api',
+  // baseURL: import.meta.env.PROD
+  //   ? 'https://1planer.stage-dream.tech/api'
+  //   : 'http://localhost:4200/api',
+  // withCredentials: true,
 })
 
 const axiosWithAuth = axios.create(options)

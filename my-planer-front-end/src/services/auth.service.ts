@@ -2,7 +2,8 @@ import { IAuthForm, IAuthResponse } from '@/types/auth.types'
 
 import { axiosClassic } from '@/api/interceptors'
 
-import { removeFromStorage, saveTokenStorage } from './auth-token.service'
+// import { removeFromStorage, saveTokenStorage } from './auth-token.service'
+import { getAccessToken, saveAccessToken, removeAccessToken } from './auth-token.service'
 
 export const authService = {
     async main(type: 'login' | 'register', data: IAuthForm) {
@@ -10,7 +11,7 @@ export const authService = {
             `/auth/${type}`,
             data
         )
-        if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
+        if (response.data.accessToken) saveAccessToken(response.data.accessToken)
 
         return response
     },
@@ -19,7 +20,7 @@ export const authService = {
             '/auth/login/access-token'
         )
 
-        if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
+        if (response.data.accessToken) saveAccessToken(response.data.accessToken)
 
         return response
     },
@@ -27,7 +28,7 @@ export const authService = {
     async logout() {
         const response = await axiosClassic.post<boolean>('/auth/logout')
 
-        if (response.data) removeFromStorage()
+        if (response.data) removeAccessToken()
 
         return response
     }

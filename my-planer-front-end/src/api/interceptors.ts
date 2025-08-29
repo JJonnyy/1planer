@@ -1,5 +1,5 @@
 import axios ,{ type CreateAxiosDefaults} from "axios";
-import { getAccessToken, removeFromStorage } from "@/services/auth-token.service";
+import { getAccessToken, removeAccessToken } from "@/services/auth-token.service";
 import { errorCatch} from "@/api/error";
 import { authService} from "@/services/auth.service";
 
@@ -47,7 +47,7 @@ axiosWithAuth.interceptors.response.use(
                 await authService.getNewTokens()
                 return axiosWithAuth.request(originalRequest)
             } catch (error) {
-                if (errorCatch(error) === 'jwt expired') removeFromStorage()
+                if (errorCatch(error) === 'jwt expired') removeAccessToken()
             }
         }
 
